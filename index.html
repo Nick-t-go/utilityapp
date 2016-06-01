@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Utility App</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+    <!-- ESRI style -->
+    <link rel="stylesheet" href="https://js.arcgis.com/3.16/esri/css/esri.css"/>
+    <link rel="stylesheet" href="https://js.arcgis.com/3.16/dijit/themes/tundra/tundra.css">
+
+    <!-- style -->
+    <link rel="stylesheet" href="style/css/index.css">
+    
+
+    <body ng-app="utilityViewer">
+        
+        <div style="height:100vh; width:100vw" ui-view></div>
+
+      
+        <script src="https://js.arcgis.com/3.16/"></script>
+
+        <!-- ANGULAR -->
+        <script type="text/javascript" src="./node_modules/angular/angular.js"></script>
+        <script type="text/javascript" src="./node_modules/angular-esri-map/dist/angular-esri-map.js"></script>
+        <script type="text/javascript" src="./node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="./node_modules/angular-cookies/angular-cookies.min.js"></script>
+        <script type="text/javascript" src="./client/ui-bootstrap-tpls-1.3.3.js"></script>
+                
+        <!-- App -->
+        <script type="text/javascript" src="./client/app.js"></script>
+
+        <!--Controllers -->
+        <script type="text/javascript" src="./client/controllers/map.js"></script>
+        
+    </body>
+
+</html>
