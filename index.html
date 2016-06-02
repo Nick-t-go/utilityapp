@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Utility App</title>
 
     <!-- Latest compiled and minified CSS -->
@@ -23,6 +25,7 @@
 
       
         <script src="https://js.arcgis.com/3.16/"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=ZZZZZZZZZZZZZZZ"> </script>
 
         <!-- ANGULAR -->
         <script type="text/javascript" src="./node_modules/angular/angular.js"></script>
@@ -36,6 +39,15 @@
 
         <!--Controllers -->
         <script type="text/javascript" src="./client/controllers/map.js"></script>
+        <script type="text/javascript" src="./client/controllers/GoogleStreetView.js"></script>
+        <script type="text/javascript" src="./client/controllers/modalInstance.js"></script>
+
+        <!--directives -->
+        <script type="text/javascript" src="./client/directives/navbar.js"></script>
+        <script type="text/javascript" src="./client/directives/GoogleStreetView.js"></script>
+
+        <!-- factories -->
+        <script type="text/javascript" src="./client/factory/LayerStore.js"></script>
         
     </body>
 

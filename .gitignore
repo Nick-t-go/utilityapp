@@ -1,6 +1,6 @@
 node_modules
 .idea
-client/app/credentials.js
+client/credentials.js
 
 
 # Windows image file caches

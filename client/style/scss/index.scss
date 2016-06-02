@@ -1,6 +1,50 @@
+@import 'navbar';
+@import 'signin';
+
+
+
+$green-color: #8CB369;
+$tan-color: #F4E285;
+$orange-color: #F4A259;
+$blue-color: #5B8E7D;
+$red-color: #BC4B51;
+
+#map_canvas {
+    width: 500px;
+    height: 500px;
+    margin: 25px; 
+    padding: 0;   
+}
+
+.modal-dialog .modal-sm{
+    width:500px;
+    height: 500px;
+}
+
+.btn-primary{
+	background-color: $green-color !important;
+	border-color: darken($green-color, 15%) !important;
+}
+
+
 #map {
 	height: 100%;
 	width: 100%;
+}
+
+#toolGroup{
+	position: fixed;
+    top: 100px;
+    right: 15px;
+    max-width: 350px;
+    z-index: 999;
+    font-weight: 300;
+    font-size: 17px;
+    letter-spacing: .03em;
+    min-width: 350px;
+}
+.esriSimpleSliderTL {
+    top: 100px;
 }
 
 

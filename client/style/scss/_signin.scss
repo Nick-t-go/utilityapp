@@ -1,0 +1,30 @@
+
+.esriSignInDialog{
+    border: solid #719971 1px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 2.5px 2.5px 1px #888888;
+}
+
+
+.dijitDialogPaneContentArea > div:first-child{
+    display: none;
+}
+
+.dijitButtonNode.dijitButtonNode{
+    border: none;
+}
+
+.dijitDialogTitleBar{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.dijitInputInner {
+	width: 100%;
+}
+
+.dijitValidationInner{
+	display: none;
+}
