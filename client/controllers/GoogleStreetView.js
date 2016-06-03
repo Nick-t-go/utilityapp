@@ -17,8 +17,8 @@ app.controller('streetViewCtrl', function($scope, esriLoader, $timeout, $uibModa
 				var modalInstance = $uibModal.open({
 			      animation: $scope.animationsEnabled,
 			      templateUrl: '../views/modalTemplate.html',
+			      backdrop: 'static',
 			      controller: 'ModalInstanceCtrl',
-			      size: 'sm',
 			      resolve: {
 			        coordinates: function () {
 			          return [lat,long];

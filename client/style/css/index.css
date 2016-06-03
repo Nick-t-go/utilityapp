@@ -96,11 +96,15 @@
 .dijitValidationInner {
   display: none; }
 
+.modal-close {
+  position: absolute;
+  right: 2px;
+  top: 2px; }
+
 #map_canvas {
   width: 500px;
   height: 500px;
-  margin: 25px;
-  padding: 0; }
+  margin: auto; }
 
 .modal-dialog .modal-sm {
   width: 500px;

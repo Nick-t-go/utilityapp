@@ -19,26 +19,9 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, coordin
         },100);	
 	});
 
+	$scope.ok = function () {
+    	$uibModalInstance.close();
+  	};
 
 
 });
-
-
-// .then(function(){
-// 		var GoogleMapElement = angular.element( document.querySelector( '#GoogleMap' ) );
-// 		console.log(GoogleMapElement);
-// 		var location = {lat: coordinates[0], lng: coordinates[1]};
-// 		var Gmap = new google.maps.Map(GoogleMapElement, {
-// 			center: location,
-// 			zoom: 14
-// 		});
-// 		var PanoElement = angular.element( document.querySelector( '#GooglePano' ) );
-// 		console.log(PanoElement);
-// 		var panorama = new google.maps.StreetViewPanorama(
-// 			PanoElement, {
-// 				position: location,
-// 				pov: {
-// 				heading: 34,
-// 				pitch: 10
-// 			}
-// 		});

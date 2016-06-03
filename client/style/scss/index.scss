@@ -1,6 +1,6 @@
 @import 'navbar';
 @import 'signin';
-
+@import 'streetview';
 
 
 $green-color: #8CB369;
@@ -9,17 +9,7 @@ $orange-color: #F4A259;
 $blue-color: #5B8E7D;
 $red-color: #BC4B51;
 
-#map_canvas {
-    width: 500px;
-    height: 500px;
-    margin: 25px; 
-    padding: 0;   
-}
 
-.modal-dialog .modal-sm{
-    width:500px;
-    height: 500px;
-}
 
 .btn-primary{
 	background-color: $green-color !important;
