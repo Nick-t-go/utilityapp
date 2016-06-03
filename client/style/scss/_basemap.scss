@@ -1,0 +1,31 @@
+$green-color: #8CB369;
+$tan-color: #F4E285;
+$orange-color: #F4A259;
+$blue-color: #5B8E7D;
+$red-color: #BC4B51;
+
+
+.imagePreview{
+    margin: auto;
+    width: 60%;
+    height:120px;
+    background: no-repeat center;
+    border: 1px black solid;
+}
+
+.basemapOptions:hover{
+    background-color: $blue-color;
+    color: white;
+}
+
+.basemapOptions {
+    list-style: none;
+}
+
+.basemapOptions:before {
+    content: "\2727";
+}
+
+.selectedBasemap:before {
+    content: "\2726";
+}

@@ -14,9 +14,7 @@
                     <span class="glyphicon glyphicon-menu-hamburger"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-                    <li role="menuitem"><a href="#">Action</a></li>
-                    <li role="menuitem"><a href="#">Another action</a></li>
-                    <li role="menuitem"><a href="#">Something else here</a></li>
+                    <li role="menuitem" ng-repeat="(key, value) in tools"><a ng-click="tools[key].visible=true" href="#">{{tools[key].name}}</a></li>
                     <li class="divider"></li>
                     <li role="menuitem"><a href="#">Separated link</a></li>
                 </ul>

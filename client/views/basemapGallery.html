@@ -1,0 +1,8 @@
+<uib-accordion-group heading="Basemap Gallery">
+    <ul ng-show="activeBase === 'esri'" ng-mouseleave="hoverImage = 'none'">
+        <li class="basemapOptions" ng-class="{selectedBasemap: option.name === currentSelection}" ng-repeat="option in basemapOptions" ng-mouseenter="showpreview(option.imagery)" ng-click="basemapChange(option.name, 'basemap')">
+            {{option.displayName }}
+        </li>
+    </ul>
+    <div ng-hide="hoverImage==='none'" class="imagePreview" ng-style="{'background': hoverImage}"></div>
+</uib-accordion-group>

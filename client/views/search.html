@@ -1,0 +1,22 @@
+<uib-accordion-group heading="Search">
+    <div class="form-group">
+        <label>Search Layer</label>
+        <select class="form-control" ng-model="layer" ng-options="selection as selection.name for selection in searchChoices"></select>
+    </div>
+    <div class="form-group" ng-show="layer">
+        <label>{{layer.fieldDisplay}}</label>
+        <div class="searchBox">
+            <input class="form-control searchInput" name="search" ng-model="search" ng-minlength="3" ng-change="inputChange(search, layer.name, layer.field)"></input>
+            <button class="btn btn-primary btn-sm" type="button" ng-click="inputChange(search, layer.name, layer.field)"><span class="glyphicon glyphicon-search"></span></button>
+            <button class="btn btn-primary btn-sm " type="button" ng-click="resetSearch()"><span class="glyphicon glyphicon-refresh"></span></button>
+        </div>
+        <div role="alert">
+            <span class="error" ng-show="search.$error.minlength">Too short!</span>
+        </div>
+    </div>
+    <ul class="searchList" ng-if="suggestions.length>0 || features.length>0">
+        Search Results
+        <li class="searchListItems" ng-repeat="location in suggestions" ng-click="zoomToAddress(location)"><small>{{location.text | noUSA}}</small></li>
+        <li class="searchListItems" ng-repeat="feature in features" ng-click="zoomToAddress(location)"><small>{{feature.attributes.OrderNum}}</small></li>
+    </ul>
+</uib-accordion-group>

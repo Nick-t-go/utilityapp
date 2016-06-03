@@ -1,14 +1,12 @@
 <navbar></navbar>
- <uib-accordion id="toolGroup" close-others="true">
-    <uib-accordion-group heading="Static Header, initially expanded" >
-      This content is straight in the template.
-    </uib-accordion-group>
-    <street-view></street-view>
-    <uib-accordion-group heading="Static Header, initially expanded" >
-      This content is straight in the template.
-    </uib-accordion-group>
+<uib-accordion id="toolGroup" close-others="true">
+    <bookmarks ng-show="tools.bookmarks.visible"></bookmarks>
+    <basemap-gallery map="map" ng-show="tools.basemapGallery.visible"></basemap-gallery>
+    <street-view ng-show="tools.streetView.visible"></street-view>
+    <search ng-show="tools.search.visible"></search>
 </uib-accordion>
 
+
 <esri-map id="map" map-options="map.options"  load="onMapLoad" basemap="{{map.basemap}}">
-	<!--  <esri-feature-layer ng-repeat="layer in layersOn" url="{{layer.url}}" layer-options="layer.options"></esri-feature-layer> -->
+	 <esri-feature-layer ng-repeat="layer in layersOn" url="{{layer.url}}" layer-options="layer.options"></esri-feature-layer>
 </esri-map>

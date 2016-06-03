@@ -1,0 +1,30 @@
+.searchList{
+	padding: 5px;
+}
+
+.searchInput{
+	width: 75%;
+}
+
+.searchBox{
+	display: flex;
+	justify-content: space-between;
+}
+.searchListItems {
+   list-style: none;
+   margin: 10px;
+}
+
+.searchListItems:before {
+    content: "\2727";
+}
+
+.searchListItems:before {
+    content: "\2726";
+}
+
+.searchListItems:hover{
+    background-color: #cdb433;
+    color: white;
+}
+	
