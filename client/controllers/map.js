@@ -1,4 +1,4 @@
-app.controller('MapCtrl', function($scope, LayerStore, esriLoader, $cookies) {
+app.controller('MapCtrl', function($scope, LayerStore, esriLoader, $cookies,  $timeout, LegendRender) {
 
     $scope.map = {
         options: {
@@ -16,55 +16,90 @@ app.controller('MapCtrl', function($scope, LayerStore, esriLoader, $cookies) {
     $scope.layers = LayerStore.layers;
 
     $scope.tools = {
-        bookmarks: { name: 'Bookmarks', visible: false, open: false },
-        basemapGallery: { name: 'Basemap Gallery', visible: false, open: false },
-        streetView: { name: 'Street View', visible: false, open: false },
-        search: { name: 'Search', visible: true, open: false }
+        bookmarks: { name: 'Bookmarks', visible: true, open: false },
+        basemapGallery: { name: 'Basemap Gallery', visible: true, open: false },
+        streetView: { name: 'Street View', visible: true, open: false },
+        search: { name: 'Search', visible: true, open: false },
+        print: { name: 'Print', visible: true, open: false }
     };
 
     $scope.layersOn = [];
 
     //move to future legend controller
-    $scope.toggleLayer = function(layer) {
-        if ($scope.esriMapObject.getLayer(layer.options.id).visible === true) {
-            $scope.esriMapObject.getLayer(layer.options.id).hide();
-            layer.options.visible = false;
+   
 
-        } else {
-            $scope.esriMapObject.getLayer(layer.options.id).show();
-            layer.options.visible = true;
-        }
-    };
+    $scope.legendVisible = false;
 
-    var token = $cookies.getObject('GDBToken');
+    
 
     $scope.onMapLoad = function(map) {
-        esriLoader.require(["esri/IdentityManager", "esri/request"], function(esriId, esriRequest) {
+        esriLoader.require(["esri/IdentityManager", "esri/request", "esri/layers/FeatureLayer", "dojo/json",], function(esriId, esriRequest, FeatureLayer, JSON) {
             $scope.$broadcast('map-loaded', map);
-            esriId.initialize(token);
+            // loadCredentials();
 
-            function myCallbackFunction(ioArgs) {
-                if (ioArgs.url.indexOf("FeatureServer") > 0) {
-                    ioArgs.content.token = token.token || "";
-                    return ioArgs;
+            // function myCallbackFunction(ioArgs) {
+            //     if (ioArgs.url.indexOf("FeatureServer") > 0) {
+            //         ioArgs.content.token = token.token || "";
+            //         return ioArgs;
+            //     } else {
+            //         return ioArgs;
+            //     }
+            // }
+            // esriId.on("credential-create", function(e) {
+            //     credJSON = JSON.stringify(e.credential);
+            //     console.log(credJSON);
+            //         $cookies.put('GDBToken', credJSON);
+            //           $scope.layers.forEach(function(layer) {
+            //         $scope.layersOn.push(layer);
+            //     });
+            // });
+            $scope.$on('add-layers', function(evt, token){
+                console.log(token);
+                    $cookies.put('GDBToken', token);
+                    $scope.layers.forEach(function(layer) {
+                        layer.url = layer.url + '?token=' + token + '&f=json';
+                        $scope.layersOn.push(layer);
+                });
+            });
+
+            // esriRequest.setRequestPreCallback(myCallbackFunction);
+
+            // function loadCredentials(){
+            //     var token = $cookies.getObject('GDBToken') || "";
+            //     if (token !== ""){
+            //         esriId.initialize(token);
+            //     }
+            // }
+            $scope.showLegend = function() {
+                $scope.legendVisible = !$scope.legendVisible;
+            };
+
+          
+            $scope.loading = false;
+            map.on('update-start', (function(evt) {
+                $scope.loading = true;
+            }));
+
+            map.on('update-end', (function(evt) {
+                $scope.loading = false;
+                $timeout(function() {
+                    $scope.$digest();
+                });
+            }));
+
+            $scope.toggleLayer = function(layer) {
+                if (map.getLayer(layer.options.id).visible === true) {
+                    map.getLayer(layer.options.id).hide();
+                    layer.options.visible = false;
+
                 } else {
-                    return ioArgs;
+                    map.getLayer(layer.options.id).show();
+                    layer.options.visible = true;
                 }
-            }
+            };
 
-            esriId.on("credential-create", function(e) {
-                credJSON = JSON.stringify(e.credential);
-                console.log(credJSON);
-                $cookies.put('GDBToken', credJSON);
-            });
+            //LegendRender.Init($scope.layers, map);
 
-            esriRequest.setRequestPreCallback(myCallbackFunction);
-
-            $scope.layers.forEach(function(layer) {
-                $scope.layersOn.push({ url: layer.url, options: layer.options });
-            });
-
-            $scope.$broadcast('map-loaded', map);
         });
     };
 });

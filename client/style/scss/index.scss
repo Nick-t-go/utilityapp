@@ -3,6 +3,8 @@
 @import 'streetview';
 @import 'basemap';
 @import 'search';
+@import 'print';
+@import 'legend';
 
 $green-color: #8CB369;
 $tan-color: #F4E285;
@@ -17,6 +19,13 @@ $red-color: #BC4B51;
 	border-color: darken($green-color, 15%) !important;
 }
 
+.panel-heading{
+    background-color: $blue-color !important;
+    color: white !important;
+}
+.panel-default {
+    border-color: lighten($blue-color, 40%) !important;
+}
 
 #map {
 	height: 100%;

@@ -1,12 +1,14 @@
 <navbar></navbar>
+<signin></signin>
 <uib-accordion id="toolGroup" close-others="true">
     <bookmarks ng-show="tools.bookmarks.visible"></bookmarks>
     <basemap-gallery map="map" ng-show="tools.basemapGallery.visible"></basemap-gallery>
     <street-view ng-show="tools.streetView.visible"></street-view>
     <search ng-show="tools.search.visible"></search>
+    <print ng-show="tools.print.visible"></print>
 </uib-accordion>
-
-
-<esri-map id="map" map-options="map.options"  load="onMapLoad" basemap="{{map.basemap}}">
-	 <esri-feature-layer ng-repeat="layer in layersOn" url="{{layer.url}}" layer-options="layer.options"></esri-feature-layer>
+<button class="legendButton" ng-click="showLegend()"><span class="glyphicon glyphicon-th-list"></span></button>
+<legend ng-show="legendVisible"></legend>
+<esri-map id="map" map-options="map.options" load="onMapLoad" basemap="{{map.basemap}}">
+    	 <esri-feature-layer ng-repeat="layer in layersOn" url="{{layer.url}}" layer-options="layer.options"></esri-feature-layer>
 </esri-map>

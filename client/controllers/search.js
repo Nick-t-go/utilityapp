@@ -17,8 +17,10 @@ app.controller('searchCtrl', function($scope, esriLoader, FindLocal, $timeout) {
                 var distance = 10000;
 
                 $scope.searchChoices = [
-                    { name: "Address", fieldDisplay: "Location", field: "local" }, { name: "Projects", fieldDisplay: "Order Number", field:"OrderNum" },
-                    { name: "Subdivision Maps", fieldDisplay: "Subdivision Name", field: "subName" }, { name: "Gdb Drawings", fieldDisplay: "Drawing Number", field:"drawNumber" }
+                    { name: "Address", id:"Address", fieldDisplay: "Location", field: "local" },
+                    { name: "Projects", id:"Projects", fieldDisplay: "Order Number", field:"OrderNum" },
+                    { name: "Subdivision Maps", id:"SubdivisionMaps", fieldDisplay: "Subdivision Name", field: "SubdivName" },
+                    { name: "Gdb Drawings", id:'GdBDrawings', fieldDisplay: "Drawing Number", field:"DrawingNumber" }
                 ];
 
                 $scope.inputChange = function(searchString, searchLayer, searchField) {
@@ -42,21 +44,34 @@ app.controller('searchCtrl', function($scope, esriLoader, FindLocal, $timeout) {
                     }
                 };
 
+                $scope.clear = function(){
+                	$scope.suggestions = "";
+                	$scope.features = "";
+                };
+
                 function queryLayer(searchString, searchLayer, searchField){
                 	var query = new Query();
                 	query.where = searchField + " LIKE '" + searchString + "%'";
                 	query.outFields = ['*'];
                 	var mapLayer = map.getLayer(searchLayer);
-                	console.log(query);
                 	mapLayer.queryFeatures(query, function(featureSet, error){
-                		
                 		$scope.features = featureSet.features;
-                		console.log($scope.features);
+                		$scope.features.display = searchField;
                 		$timeout(function() {
                             $scope.$digest();
                         });
                 	});
                 }
+
+                $scope.zoomToExtent = function(feature){
+                	if(feature._extent){
+	                	$timeout(function() {
+	                        map.setExtent(feature._extent);
+	                    });
+	                }else {
+	                	console.log("No Extent");
+	                }
+                };
 
                 $scope.test = function(value) {
                     console.log(value);
@@ -79,13 +94,10 @@ app.controller('searchCtrl', function($scope, esriLoader, FindLocal, $timeout) {
                 $scope.zoomToAddress = function(local) {
                     searchResultGraphic.clear();
                     var SingleLine = local.text;
-                    //.slice(0, local.text.indexOf(', USA'));
                     var f = 'json';
                     var outSR = new SpatialReference(102100);
                     var outFields = '*';
                     var countryCode = "USA";
-                    // var location = map.extent.getCenter().normalize();
-                    // var distance = 50000;
                     var maxLocations = 6;
                     var params = { SingleLine: SingleLine, f: f, outSR: outSR, outFields: outFields, magicKey: local.magicKey, countryCode: countryCode, maxLocations: maxLocations };
                     FindLocal.find(params)
@@ -94,7 +106,6 @@ app.controller('searchCtrl', function($scope, esriLoader, FindLocal, $timeout) {
                             var pt = new Point(firstHit.location.x, firstHit.location.y, map.spatialReference);
                             var attr = { "StAddr": firstHit.attributes.StAddr, "Match_addr": firstHit.attributes.Match_addr, "City": firstHit.attributes.City, Subregion: firstHit.attributes.Subregion, X: firstHit.attributes.X, Y: firstHit.attributes.Y };
                             var pinGraphic = new Graphic(pt, markerSymbol, attr);
-                            console.log(pinGraphic);
                             searchResultGraphic.add(pinGraphic);
                             $timeout(function() {
                                 map.centerAndZoom(pt, 16);
@@ -121,11 +132,7 @@ app.controller('searchCtrl', function($scope, esriLoader, FindLocal, $timeout) {
                     $scope.input = "";
                     searchResultGraphic.clear();
                 };
-
-
-
             });
-
     });
 
 });
