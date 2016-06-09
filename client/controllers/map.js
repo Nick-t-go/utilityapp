@@ -56,11 +56,13 @@ app.controller('MapCtrl', function($scope, LayerStore, esriLoader, $cookies,  $t
             $scope.$on('add-layers', function(evt, token){
                 console.log(token);
                     $cookies.put('GDBToken', token);
-                    $scope.layers.forEach(function(layer) {
-                        layer.url = layer.url + '?token=' + token + '&f=json';
+                   
+            });
+
+             $scope.layers.forEach(function(layer) {
+                        layer.url = layer.url;
                         $scope.layersOn.push(layer);
                 });
-            });
 
             // esriRequest.setRequestPreCallback(myCallbackFunction);
 

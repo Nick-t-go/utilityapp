@@ -1,9 +1,8 @@
-$green-color: #8CB369;
-$tan-color: #F4E285;
-$orange-color: #F4A259;
-$blue-color: #5B8E7D;
-$red-color: #BC4B51;
-
+$green-l-color: #69FF9F;
+$green-d-color: #5FE8B7;
+$blue-l-color: #76FFF5;
+$blue-m-color: #5FCEE8;
+$blue-d-color: #69BAFF;
 
 .imagePreview{
     margin: auto;
@@ -14,7 +13,7 @@ $red-color: #BC4B51;
 }
 
 .basemapOptions:hover{
-    background-color: $blue-color;
+    background-color: $green-d-color;
     color: white;
 }
 

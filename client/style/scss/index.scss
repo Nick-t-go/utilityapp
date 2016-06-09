@@ -6,25 +6,25 @@
 @import 'print';
 @import 'legend';
 
-$green-color: #8CB369;
-$tan-color: #F4E285;
-$orange-color: #F4A259;
-$blue-color: #5B8E7D;
-$red-color: #BC4B51;
+$grey-color: #545454;
+$white-color: #D6D6CA;
+$green-color: #6A9A33;
+$red-color: #D43F53;
+$blue-color: #00ACF3;
 
 
 
 .btn-primary{
-	background-color: $green-color !important;
-	border-color: darken($green-color, 15%) !important;
+	background-color: $blue-color !important;
+	border-color: darken($blue-color, 15%) !important;
 }
 
 .panel-heading{
-    background-color: $blue-color !important;
+    background-color: $red-color !important;
     color: white !important;
 }
 .panel-default {
-    border-color: lighten($blue-color, 40%) !important;
+    border-color: lighten($red-color, 40%) !important;
 }
 
 #map {

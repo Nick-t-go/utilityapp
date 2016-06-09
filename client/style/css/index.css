@@ -1,12 +1,12 @@
 .navbar {
-  background-color: #9bc19c;
-  background: -webkit-linear-gradient(-270deg, #F4A259, #F4E285);
+  background-color: #545454;
+  background: -webkit-linear-gradient(-270deg, #545454, #D6D6CA);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(-270deg, #F4A259, #F4E285);
+  background: -o-linear-gradient(-270deg, #545454, #D6D6CA);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(-270deg, #F4A259, #F4E285);
+  background: -moz-linear-gradient(-270deg, #545454, #D6D6CA);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(-270deg, #F4A259, #F4E285);
+  background: linear-gradient(-270deg, #545454, #D6D6CA);
   /* Standard syntax */
   right: 47px;
   margin: 15px;
@@ -139,7 +139,7 @@
   border: 1px black solid; }
 
 .basemapOptions:hover {
-  background-color: #5B8E7D;
+  background-color: #5FE8B7;
   color: white; }
 
 .basemapOptions {
@@ -328,15 +328,15 @@
   min-width: 32px !important; }
 
 .btn-primary {
-  background-color: #8CB369 !important;
-  border-color: #668a46 !important; }
+  background-color: #00ACF3 !important;
+  border-color: #0076a7 !important; }
 
 .panel-heading {
-  background-color: #5B8E7D !important;
+  background-color: #D43F53 !important;
   color: white !important; }
 
 .panel-default {
-  border-color: #d3e2dd !important; }
+  border-color: #f9e6e8 !important; }
 
 #map {
   height: 100%;

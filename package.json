@@ -1,5 +1,5 @@
 {
-  "name": "utility",
+  "name": "elevation",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -24,7 +24,7 @@
   "keywords": [
     "esri",
     "js",
-    "utility"
+    "elevation"
   ],
   "author": "Nick Toscano",
   "license": "ISC"
